@@ -38,3 +38,16 @@ fvm flutter run -d chrome
 ```bash
 fvm install
 ```
+
+## Setup Firebase
+
+```bash
+asdf install nodejs 20.11.1
+asdf local nodejs 20.11.1
+npm install -g firebase-tools
+```
+
+```bash
+firebase login
+firebase init hosting
+```
