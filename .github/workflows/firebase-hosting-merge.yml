@@ -17,6 +17,19 @@ jobs:
         with:
           flutter-version: "3.19.0"
           channel: 'stable'
+          cache: true
+      - name: Cache pubspec
+        id: cache-pubspec
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ env.FLUTTER_HOME }}/.pub-cache
+            **/.flutter-plugins
+            **/.flutter-plugin-dependencies
+            **/.dart_tool/package_config.json
+          key: pubspec-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            pubspec-
       - name: Install dependencies
         run: flutter pub get
       - name: Build
