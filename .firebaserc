@@ -5,7 +5,7 @@
   "targets": {
     "flutter-example-d4de5": {
       "hosting": {
-        "main": [
+        "app": [
           "flutter-example-d4de5"
         ],
         "widgetbook": [

@@ -7,19 +7,19 @@ on:
   pull_request:
 
 jobs:
-  build_and_preview:
+  app_deploy_preview:
     permissions:
       contents: read
       pull-requests: write
       checks: write
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.19.0"
-          channel: 'stable'
+          channel: "stable"
           cache: true
       - name: Install dependencies
         run: flutter pub get
@@ -27,7 +27,7 @@ jobs:
         run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_EXAMPLE_D4DE5 }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_EXAMPLE_D4DE5 }}"
           projectId: flutter-example-d4de5
-          target: main
+          target: app

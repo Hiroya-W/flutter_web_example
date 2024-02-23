@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build_and_deploy:
+  app_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,9 +28,9 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_EXAMPLE_D4DE5 }}"
           channelId: live
           projectId: flutter-example-d4de5
-          target: main
+          target: app
 
-  widgetbook_preview:
+  widgetbook_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
