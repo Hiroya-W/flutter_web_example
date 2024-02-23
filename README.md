@@ -51,3 +51,9 @@ npm install -g firebase-tools
 firebase login
 firebase init hosting
 ```
+
+## How to use Widgetbook
+
+```bash
+fvm flutter run -t lib/widgetbook.dart -d chrome
+```
