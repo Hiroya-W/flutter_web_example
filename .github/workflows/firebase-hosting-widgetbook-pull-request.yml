@@ -1,4 +1,4 @@
-name: Deploy to Firebase Hosting on PR
+name: Deploy preview on PR(Widgetbook)
 
 on:
   pull_request:
