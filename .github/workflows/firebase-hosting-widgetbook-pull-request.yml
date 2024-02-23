@@ -1,0 +1,35 @@
+name: Deploy preview on PR(Widgetbook)
+
+on:
+  pull_request:
+    paths:
+      - "lib/components/**/*.dart"
+      - "lib/**/*.story.dart"
+
+jobs:
+  widgetbook_preview:
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: write
+    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.19.0"
+          channel: "stable"
+          cache: true
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Generate widgetbook files
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Build widgetbook
+        run: flutter build web -t lib/widgetbook.dart
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_FLUTTER_EXAMPLE_D4DE5 }}"
+          projectId: flutter-example-d4de5
+          target: widgetbook

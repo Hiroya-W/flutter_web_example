@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "flutter-example-d4de5"
-  }
+  },
+  "targets": {
+    "flutter-example-d4de5": {
+      "hosting": {
+        "main": [
+          "flutter-example-d4de5"
+        ],
+        "widgetbook": [
+          "flutter-example-widgetbook"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
