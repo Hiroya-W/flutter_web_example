@@ -54,6 +54,16 @@ firebase init hosting
 
 ## How to use Widgetbook
 
+Widgetbook用の `lib/widgetbook.directories.g.dart` は `build_runner` を使って自動的に生成するため、以下のコマンドを実行しておきます。
+
+```bash
+flutter pub run build_runner watch
+```
+
+次に、`src/components` にWidgetを作成します。
+
+作成したWidgetをWidgetbookから確認するため、以下のコマンドを実行します。
+
 ```bash
 fvm flutter run -t lib/widgetbook.dart -d chrome
 ```
