@@ -97,3 +97,6 @@ lib/widgetbook.directories.g.dart
 # Firebase Local Emulator Suite logs
 .config/configstore/
 *-debug.log
+
+## Firestore exported data
+data/
