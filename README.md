@@ -67,3 +67,58 @@ flutter pub run build_runner watch
 ```bash
 fvm flutter run -t lib/widgetbook.dart -d chrome
 ```
+
+## Firebase Local Emulator Suite でローカルで開発する
+
+> Firebase Local Emulator Suite は、アプリのビルドとテストをローカルで行うことのできる、デベロッパー向けの高度なツールセットです。
+> https://firebase.google.com/docs/emulator-suite?hl=ja
+
+起動すると、以下のURLからEmulator UIを表示することが出来ます。
+
+Emulator UI: http://127.0.0.1:4000/
+
+| Emulator  | Host:Port    | View in Emulator UI             |
+| --------- | ------------ | ------------------------------- |
+| Firestore | 0.0.0.0:8080 | http://127.0.0.1:4000/firestore |
+| Hosting   | 0.0.0.0:5002 | n/a                             |
+
+Hostingでは、`build/web` ディレクトリ内のコンテンツを表示することが出来ます。
+`fvm flutter build` した後の表示の確認に活用してください。
+
+### Dockerを使って起動する場合
+
+Dockerを使う場合は、`docker`ディレクトリに`compose.yml`を配置しているのでこれを利用します。
+また、以降のコマンドは全て`docker`ディレクトリ内で実行することを想定しています。
+
+```bash
+cd docker
+```
+
+Firebaseにログインします。
+
+```bash
+docker compose run --rm firebase firebase login --no-localhost
+```
+
+URLが表示されるのでURLへブラウザからアクセスします。
+ブラウザからログインし、表示されるAuthorization codeをターミナルへ入力してログインは完了です。
+
+Emulatorを起動する場合は以下のコマンドを実行します。
+
+```bash
+docker compose up -d
+```
+
+Emulatorを停止する場合は以下のコマンドを実行します。
+
+```bash
+docker compose down
+```
+
+### Dockerを使わない場合
+
+Dockerを使わなくても、JavaがインストールされたPCであればEmulatorを起動することが出来ます。
+
+```bash
+firebase emulators:start
+```
