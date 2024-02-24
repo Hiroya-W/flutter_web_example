@@ -1,0 +1,14 @@
+services:
+  firebase:
+    image: andreysenov/firebase-tools:13.3.0-node-20-slim
+    container_name: firebase-tools
+    volumes:
+      - type: bind
+        source: ..
+        target: /home/node
+    ports:
+      - 8080:8080
+      - 4000:4000
+      - 5002:5002
+    working_dir: /home/node
+    command: firebase emulators:start
