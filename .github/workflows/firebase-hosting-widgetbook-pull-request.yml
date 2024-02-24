@@ -5,6 +5,7 @@ on:
     paths:
       - "lib/components/**/*.dart"
       - "lib/**/*.story.dart"
+      - "lib/widgetbook.dart"
 
 jobs:
   widgetbook_deploy_preview:

@@ -18,7 +18,35 @@ class WidgetbookApp extends StatelessWidget {
     return Widgetbook.material(
       // Use the generated directories variable
       directories: directories,
-      addons: [],
+      addons: [
+        AccessibilityAddon(),
+        MaterialThemeAddon(
+          themes: <WidgetbookTheme<ThemeData>>[
+            WidgetbookTheme<ThemeData>(
+              name: 'Light',
+              data: ThemeData.light(),
+            ),
+            WidgetbookTheme<ThemeData>(
+              name: 'Dark',
+              data: ThemeData.dark(),
+            ),
+          ],
+        ),
+        DeviceFrameAddon(
+          devices: <DeviceInfo>[...Devices.android.all, ...Devices.ios.all],
+        ),
+        GridAddon(10),
+        AlignmentAddon(
+          initialAlignment: Alignment.center,
+        ),
+        InspectorAddon(enabled: true),
+        TextScaleAddon(
+          scales: [1.0, 1.25, 1.5, 1.75, 2.0],
+          initialScale: 1,
+        ),
+        TimeDilationAddon(),
+        ZoomAddon(initialZoom: 1.0),
+      ],
       integrations: [
         // To make addons & knobs work with Widgetbook Cloud
         WidgetbookCloudIntegration(),
