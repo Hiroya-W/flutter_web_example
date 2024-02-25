@@ -11,4 +11,4 @@ services:
       - 4000:4000
       - 5002:5002
     working_dir: /home/node
-    command: firebase emulators:start
+    command: firebase emulators:start --import=./data --export-on-exit

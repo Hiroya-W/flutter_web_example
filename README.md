@@ -85,7 +85,9 @@ Emulator UI: http://127.0.0.1:4000/
 Hostingでは、`build/web` ディレクトリ内のコンテンツを表示することが出来ます。
 `fvm flutter build` した後の表示の確認に活用してください。
 
-### Dockerを使って起動する場合
+### 起動方法
+
+#### Dockerを使って起動する場合
 
 Dockerを使う場合は、`docker`ディレクトリに`compose.yml`を配置しているのでこれを利用します。
 また、以降のコマンドは全て`docker`ディレクトリ内で実行することを想定しています。
@@ -115,10 +117,11 @@ Emulatorを停止する場合は以下のコマンドを実行します。
 docker compose down
 ```
 
-### Dockerを使わない場合
+#### Dockerを使わない場合
 
 Dockerを使わなくても、JavaがインストールされたPCであればEmulatorを起動することが出来ます。
+`--import./data --export-on-exit` オプションをつけておくと、終了時にEmulatorのFirestoreに記録されたデータをダンプし、次回の起動時にはダンプからデータを復元してくれるようになります。
 
 ```bash
-firebase emulators:start
+firebase emulators:start --import=./data --export-on-exit
 ```
